@@ -5,48 +5,56 @@ public abstract class Hobby {
     private int yearsSpent;
     private boolean isActive;
 
-    public abstract void tellAboutHobby();
+    public abstract void tellAboutHobby(String name) throws Exception;
 
-    public Hobby(String hobbyName, int yearsSpent, boolean isActive) {
-        this.hobbyName = hobbyName;
-        this.yearsSpent = yearsSpent;
-        this.isActive = isActive;
+    Hobby(final String userHobbyName,
+          final int userYearsSpent, final boolean userIsActive) {
+        this.hobbyName = userHobbyName;
+        this.yearsSpent = userYearsSpent;
+        this.isActive = userIsActive;
     }
 
-    public Hobby() {
+    Hobby() {
         this.hobbyName = "Unknown";
     }
 
-    public String getHobbyName() {
+    final String getHobbyName() {
         return hobbyName;
     }
 
-    public void setHobbyName(String hobbyName) {
-        this.hobbyName = hobbyName;
+    final void setHobbyName(final String userHobbyName) {
+        this.hobbyName = userHobbyName;
     }
 
-    public int getYearsSpent() {
+    final int getYearsSpent() {
         return yearsSpent;
     }
 
-    public void setYearsSpent(int yearsSpent) {
-        this.yearsSpent = yearsSpent;
+    final void setYearsSpent(final int userYearsSpent) {
+        this.yearsSpent = userYearsSpent;
     }
 
-    public boolean isActive() {
+    final boolean isActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    final void setIsActive(final boolean userIsActive) {
+        this.isActive = userIsActive;
     }
+
+    /**
+     * Returns basic info on a hobby.
+     * @return basic info
+     */
 
     @Override
     public String toString() {
-        return "Hobby{" +
-                "hobbyName='" + hobbyName + '\'' +
-                ", yearsSpent=" + yearsSpent +
-                ", isActive=" + isActive +
-                '}';
+        return "Hobby{" + "hobbyName='" + hobbyName + '\''
+                + ", yearsSpent=" + yearsSpent
+                + ", isActive=" + isActive + '}';
     }
+
+    abstract void setStyle(String style);
+    abstract void setSeason(String season);
+    abstract void setAverageTrophies(float avg);
 }
