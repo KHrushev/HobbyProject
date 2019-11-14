@@ -3,16 +3,21 @@ package com.basepackage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import org.apache.log4j.Logger;
 
-public class TestClass {
-    public static void main(final String[] args) throws Exception {
+public class App {
+
+    final static Logger logger = Logger.getLogger(App.class);
+
+    public static void main(String[] args) throws Exception {
+        logger.info("Logger started successfuly.");
+
         String name;
         String style;
         String season;
         int yearsSpent;
         float avg;
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Art hobby1 = new Art();
         Art hobby2 = new Art();
@@ -52,15 +57,19 @@ public class TestClass {
                     hobby.setYearsSpent(yearsSpent);
                     hobby.setIsActive(true);
                 }
+
+                logger.info("Array of hobbies has been successfully initialized!");
             }
         } catch (IOException ioExc) {
             System.out.println(
                     "Input/Output Exception Occurred"
                     + " while reading input for hobbies");
+            logger.error("Input/Output Exception occurred");
             System.exit(-1);
         } catch (RuntimeException runExc) {
             System.out.println("Runtime exception detected"
                     + " while reading input for hobbies");
+            logger.error("RuntimeException occurred Exception occurred");
             System.exit(-1);
         }
 
